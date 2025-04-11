@@ -1,8 +1,7 @@
-// Components/MovieList.jsx
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function MovieList() {
+function MovieList({ darkMode }) {
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,25 +19,31 @@ function MovieList() {
   }, []);
 
   if (isLoading) {
-    return <div className="text-white text-center py-8">Loading...</div>;
+    return (
+      <div className={`text-center py-8 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+        Loading...
+      </div>
+    );
   }
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-      {movieList.map(movie => (
-        <Link to={`/movie/${movie.id}`} key={movie.id} className="group">
-          <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105">
-            <img
-              className="w-full h-auto"
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-              <h3 className="text-white font-semibold">{movie.title}</h3>
+    <div className={`p-4 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        {movieList.map(movie => (
+          <Link to={`/movie/${movie.id}`} key={movie.id} className="group">
+            <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105">
+              <img
+                className="w-full h-auto"
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <h3 className="text-white font-semibold">{movie.title}</h3>
+              </div>
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
