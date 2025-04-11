@@ -22,7 +22,7 @@ const Navbar = () => {
             <li><a href="#" className="text-gray-200 hover:text-cyan-400">Home</a></li>
             <li><a href="#" className="text-gray-200 hover:text-cyan-400">Series</a></li>
             <li><a href="#" className="text-gray-200 hover:text-cyan-400">Films</a></li>
-            <li><a href="#" className="text-gray-200 hover:text-cyan-400">Acteurs</a></li>
+            <li><a href="#" className="text-gray-200 hover:text-cyan-400">Favoris</a></li>
           </div>
 
           <li className="flex items-center space-x-2">

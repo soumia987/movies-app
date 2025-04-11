@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
+
+const   api_key = '930bb7f05f1e8fe59e763a0e6c813609';
+const Base_URL = "https://api.themoviedb.org/3";
+
 function Movie() {
   const [movieList, setMovieList] = useState([]);
 
   const getMovie = () => {
-    fetch("https://api.themoviedb.org/3/discover/movie?api_key=930bb7f05f1e8fe59e763a0e6c813609")
+    fetch(`${Base_URL}/discover/movie?${api_key}`)
       .then(res => res.json())
       .then(json => setMovieList(json.results));
   };
